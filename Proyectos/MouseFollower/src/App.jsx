@@ -18,7 +18,10 @@ function App() {
     }
 
     // Limpiar el event listener al desmontar el componente o cuando enabled cambie
-    return () => window.removeEventListener("pointermove", handleMove);
+    return () => {
+      window.removeEventListener("pointermove", handleMove);
+      setPosition({ x: 0, y: 0 });
+    };
     //desde la consola del navegador podemos utilziar getEventListener(window) -> vemos cuantos eventos tenemos suscritos(y revisar si los hemos limpiado o no)
   }, [enabled]);
 
