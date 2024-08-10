@@ -1,0 +1,6 @@
+En caso de ser necesario generar el punto de entrada de forma manual
+npm créate vite@latest -> ultima versión de vite
+Vanilla -> para libre configuración del framework
+JavaScript -> para su variante
+npm install -> para instalar las depencias
+npm install @vitejs/plugin-react -E ->para plugin versión exacta
