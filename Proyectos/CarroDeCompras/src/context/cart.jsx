@@ -19,19 +19,23 @@ export function CartProvider ({ children }) {
       return setCart(newCart)
     }
     // si el producto no esta en el carrito
-    setCart(prevState => ([
-      ...prevState, { // copia del estado previo
+    setCart(prevState => [
+      ...prevState,
+      {
+        // copia del estado previo
         ...product, // copiamos el producto y agregamos la propiedad quantity en 1 en el estado actual
         quantity: 1
       }
-    ]))
+    ])
   }
   const clearCart = () => {
     setCart([]) // vuelve el cart a vacio
   }
-
+  const removeFromCart = product => {
+    setCart(prevState => prevState.filter(item => item.id !== product.id))
+  }
   return (
-    <CartContext.Provider value={{ cart, addToCart, clearCart }}>
+    <CartContext.Provider value={{ cart, addToCart, clearCart, removeFromCart }}>
       {children}
     </CartContext.Provider>
   )
