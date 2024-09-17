@@ -6,7 +6,7 @@ import { CartItem } from './CartItem.jsx'
 
 export function Cart () {
   const cartCheckboxId = useId()
-  const { cart, clearCart, addToCart } = useCart()
+  const { cart, clearCart, addToCart, restItemFromCart } = useCart()
 
   return (
     <>
@@ -18,8 +18,7 @@ export function Cart () {
 
       <aside className='cart'>
         <ul>
-          {/* Elemento li estatico para revisar el carro de compras */}
-          {/* <li>
+          {/* <li> Elemento li estatico para revisar el carro de compras
             <img src='https://cdn.dummyjson.com/products/images/groceries/Apple/thumbnail.png' alt='Apple' />
             <div>
               <strong>Apple</strong> - $1.99
@@ -32,13 +31,15 @@ export function Cart () {
           {cart.map(product => (
             <CartItem
               addToCart={() => addToCart(product)}
+              restItemFromCart={() => restItemFromCart(product)}
               key={product.id}
               {...product}
             />
-          )
-          )}
+          ))}
         </ul>
-        <button onClick={() => clearCart()}><ClearCartIcon /></button>
+        <button onClick={() => clearCart()}>
+          <ClearCartIcon />
+        </button>
       </aside>
     </>
   )
